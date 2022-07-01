@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const socket = io("wss://chat.lswt2021.comiles.eu");
+const socket = io("wss://dataweek-chat-a.nate.eccenca.dev");
 // const socket = io("ws://localhost:8000");
 
 socket.on('server_message', (data) => {
