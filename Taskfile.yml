@@ -22,7 +22,7 @@ tasks:
 
   publish:
     - cd .publish-pages && git rm -r --ignore-unmatch *
-    - cp -r stream-b.html stream-a.html dist .publish-pages
+    - cp -r stream-b.html stream-a.html arrow-left-circle.svg dist .publish-pages
     - cd .publish-pages && git add *
     - cd .publish-pages && git commit -m "publish"
     - cd .publish-pages && git push origin pages
