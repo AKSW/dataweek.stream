@@ -46,11 +46,13 @@ function isPressingEnter(e){
     k = e.keyCode;
     if(k===13){
       sendMessage();
+      return false;
     }
   } else if(e.which){
     k = e.which;
     if(k===13){
       sendMessage();
+      return false;
     }
   }
 }
