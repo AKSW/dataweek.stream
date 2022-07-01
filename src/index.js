@@ -4,21 +4,23 @@ const socket = io("wss://dataweek-chat-a.nate.eccenca.dev");
 // const socket = io("ws://localhost:8000");
 
 socket.on('server_message', (data) => {
-  let e = document.createElement('p');
-  let sp_nick = document.createElement('span');
-  let sp_time = document.createElement('span');
-  let sp_message = document.createElement('span');
-  sp_nick.innerHTML = data.nickname;
-  sp_time.innerHTML = data.time;
-  sp_time.setAttribute("class", "date");
-  sp_message.innerHTML = data.channel + data.message;
-  e.append(sp_time);
-  e.append(" ");
-  e.append(sp_nick);
-  e.append(": ");
-  e.append(sp_message);
+  if (data.channel == document.getElementById('channel').value) {
+    let e = document.createElement('p');
+    let sp_nick = document.createElement('span');
+    let sp_time = document.createElement('span');
+    let sp_message = document.createElement('span');
+    sp_nick.innerHTML = data.nickname;
+    sp_time.innerHTML = data.time;
+    sp_time.setAttribute("class", "date");
+    sp_message.innerHTML = data.message;
+    e.append(sp_time);
+    e.append(" ");
+    e.append(sp_nick);
+    e.append(": ");
+    e.append(sp_message);
 
-  document.getElementById('message-box').prepend(e);
+    document.getElementById('message-box').prepend(e);
+  }
 });
 
 function htmlEntities(str) {
