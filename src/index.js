@@ -11,7 +11,7 @@ socket.on('server_message', (data) => {
   sp_nick.innerHTML = data.nickname;
   sp_time.innerHTML = data.time;
   sp_time.setAttribute("class", "date");
-  sp_message.innerHTML = data.message;
+  sp_message.innerHTML = data.channel + data.message;
   e.append(sp_time);
   e.append(" ");
   e.append(sp_nick);
@@ -25,11 +25,12 @@ function htmlEntities(str) {
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-function sendMessage(){
+function sendMessage(channel){
   if (document.getElementById('nickname-input').value.trim() == "") {
     document.getElementById('nickname-input').required = "true";
   } else {
     socket.emit('client_message', {
+      'channel': channel,
       'nickname': htmlEntities(document.getElementById('nickname-input').value),
       'message': htmlEntities(document.getElementById('message-input').value)
     });
